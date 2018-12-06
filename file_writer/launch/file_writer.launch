@@ -1,0 +1,9 @@
+<launch>
+   <arg name="path"  default="$(find file_writer)"/>
+   <include file="$(find file_writer)/launch/file_writer_cpp.launch">
+            <arg name="path" value="$(arg path)" />
+   </include>
+   <include file="$(find file_writer)/launch/file_writer_py.launch">
+            <arg name="path" value="$(arg path)" />
+   </include>
+</launch>

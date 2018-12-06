@@ -1,0 +1,4 @@
+<launch>
+   <arg name="path"  default="$(find file_writer)"/>
+   <node name="text_writer_cpp" pkg="file_writer" type="writer_cpp" args="$(arg path)" />
+</launch>

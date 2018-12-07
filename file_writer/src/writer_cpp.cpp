@@ -9,6 +9,7 @@ using namespace std;
 void callback1(const std_msgs::String::ConstPtr& msg, std::string path)
 { 
   ROS_INFO("%s is appended to  %s/text1_cpp.txt ",msg->data.c_str(),path.c_str());
+
   ofstream myfile1(path +"/text1_cpp.txt",ios_base::app | ios_base::out);
   myfile1 <<msg-> data <<"\n";
 }
@@ -16,6 +17,7 @@ void callback1(const std_msgs::String::ConstPtr& msg, std::string path)
 void callback2 (const std_msgs::String::ConstPtr& msg, std::string path)
 {
   ROS_INFO("%s is appended to  %s/text2_cpp.txt ",msg->data.c_str(),path.c_str());
+
   ofstream myfile2(path +"/text2_cpp.txt",ios_base::app | ios_base::out);
   myfile2 <<msg-> data <<"\n";
 
@@ -26,9 +28,10 @@ int main(int argc, char **argv)
 {
 
 std::string path;
-if (argc > 1){
-  path = argv[1];
-}
+
+/*path for storing files */
+path = argv[1];
+
 /* creating an empty text files*/
 ofstream myfile1(path +"/text1_cpp.txt");
 myfile1.close();

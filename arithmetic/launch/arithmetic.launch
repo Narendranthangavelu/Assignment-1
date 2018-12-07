@@ -1,4 +1,7 @@
 <launch>
-   <node name="calculator_py" pkg="arithmetic" type="arithmetic_py.py" />
-   <node name="calculator_cpp" pkg="arithmetic" type="arithmetic_cpp" />
+
+     <include file="$(find arithmetic)/launch/arithmetic_cpp.launch" />
+
+     <include file="$(find arithmetic)/launch/arithmetic_py.launch" />
+ 
 </launch>

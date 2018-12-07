@@ -6,7 +6,7 @@ bool process(arithmetic::DataProcess::Request  &req,
          arithmetic::DataProcess::Response &res)
 {
   std::string status;
-  if ((int)req.id > 4 )
+  if ((int)req.id < 5 )
   {
   switch((int)req.id)
     {
@@ -28,7 +28,7 @@ bool process(arithmetic::DataProcess::Request  &req,
         break;
    case 4 :
         res.result= pow(req.num1, req.num2);
-	status = "Give correct identifier (0-4)";     
+	status = "power";     
     }
   
   ROS_INFO("sending back response [%f] after %s",res.result,status.c_str());

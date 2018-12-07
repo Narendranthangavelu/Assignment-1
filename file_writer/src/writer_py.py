@@ -5,12 +5,14 @@ import sys
 
 def callback1(data,path):
     rospy.loginfo(" %s is appended to %s/text1_py.txt",data.data,path)
+
     f1 = open(path + "/text1_py.txt","a")
     f1.write(data.data+'\n')
     f1.close()
     return
 def callback2(data,path):
     rospy.loginfo(" %s is appended to %s/text2_py.txt",data.data,path)
+
     f2 = open(path + "/text2_py.txt","a")
     f2.write(data.data+'\n')
     f2.close()
@@ -27,6 +29,8 @@ def write_string_to_file(path):
     rospy.spin()
 
 if __name__ == '__main__':
+  
+    #path for storing files
     path = sys.argv[1]
 
     # create a new file 

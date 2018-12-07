@@ -6,9 +6,9 @@ Project contains two packages
 
 ## Getting Started
 
-Clone this project in your catkin workspace under the src folder.  
+Clone this project in your catkin workspace under the **src** folder.  
       ```
-      git clone https://github.com/Narendranthangavelu/Assignment-1.git. 
+      git clone https://github.com/Narendranthangavelu/Assignment-1.git 
       ```  
       Build the project using the following command before that make sure you are in catkin workspace directory.  
       ```
@@ -34,21 +34,46 @@ Clone this project in your catkin workspace under the src folder.
     ```
     rostopic pub /talk1_py std_msgs/String "data: 'this canbe applied to both cpp and python program'" 
     ```
+    |Language   |Topics |
+    |-----------|-------|
     |c++ topics | /talk1_cpp , /talk2_cpp |
-    |-----------|-------------------------|
     |python topics | /talk1_py , /talk2_py |
 
 ### 2. Arithmetic Operations
   * This package creates a service for basic mathematical operations. Service request consist of two operands and one identifier.
-    Identifier will specify the artihmetic operation as mentioned below, 
+    Identifier will specify the artihmetic operation as mentioned below,  
     
-    |vIdentifier  | operation|
+    |Identifier  | operation|
     |-------|----------|
     |0   | Addition   |
     |1 | Subtraction  |
     |2 | Multiplication|
     |3 | Divide    |
     |4 | Power      |
+    
+    To launch the service created on c++.
+    ```
+    roslaunch arithmetic arithmetic_cpp.launch
+    ```
+    To launch the service created on python
+    ```
+    roslaunch arithmetic arithmetic_py.launch
+    ```
+    Services created are **calculate_cpp** and **calculate_py** for c++ and python respectively.  
+    #### eg: 
+    ```
+    rosservice call /calculate_cpp "num1: 5.0                 
+    num2: 2.0
+    id: 1" 
+
+    ```
+    ```
+    rosservice call /calculate_py "num1: 5.0                 
+    num2: 2.0
+    id: 1" 
+
+    ```
+    
     
     
 

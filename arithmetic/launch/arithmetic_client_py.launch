@@ -1,0 +1,3 @@
+<launch>
+   <node name="client_py" pkg="arithmetic" type="arithmetic_client_py.py" output = "screen"/>
+</launch>

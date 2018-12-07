@@ -1,0 +1,7 @@
+<launch>
+
+     <include file="$(find arithmetic)/launch/arithmetic_server_cpp.launch" />
+
+     <include file="$(find arithmetic)/launch/arithmetic_server_py.launch" />
+ 
+</launch>

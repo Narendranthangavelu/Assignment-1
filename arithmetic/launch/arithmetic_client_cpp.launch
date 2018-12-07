@@ -1,0 +1,3 @@
+<launch>
+   <node name="client_cpp" pkg="arithmetic" type="arithmetic_client_cpp" output = "screen"/>
+</launch>

@@ -40,7 +40,7 @@ Clone this project in your catkin workspace under the **src** folder.
     |python topics | /talk1_py , /talk2_py |
 
 ### 2. Arithmetic Operations
-  * This package creates a service for basic mathematical operations. Service request consist of two operands and one identifier.
+  * This package creates a service for basic mathematical operations. The service request consists of 3 numbers (two numbers and an identifier to decide what to do with the two numbers). The response depends on the identifier given as part of the request.
     Identifier will specify the artihmetic operation as mentioned below,  
     
     |Identifier  | operation|
@@ -51,15 +51,19 @@ Clone this project in your catkin workspace under the **src** folder.
     |3 | Divide    |
     |4 | Power      |
     
-    To launch the service created on c++.
+    To launch the server created on c++.
     ```
-    roslaunch arithmetic arithmetic_cpp.launch
+    roslaunch arithmetic arithmetic_server_cpp.launch
     ```
-    To launch the service created on python
+    To launch the server created on python
     ```
-    roslaunch arithmetic arithmetic_py.launch
+    roslaunch arithmetic arithmetic_server_py.launch
     ```
-    Services created are **calculate_cpp** and **calculate_py** for c++ and python respectively.  
+    To launch both the servers,
+    ```
+    roslaunch arithmetic arithmetic_server.launch
+    ```
+    Servers created are **calculate_cpp** and **calculate_py** for c++ and python respectively. It can be checked directly using the request using the following examples.  
     #### eg: 
     ```
     rosservice call /calculate_cpp "num1: 5.0                 
@@ -73,6 +77,16 @@ Clone this project in your catkin workspace under the **src** folder.
     id: 1" 
 
     ```
+    To launch a client application for continuous arithmetic calculations use the following commands. Make sure that server is running.  
+    **For cpp,**
+    ```
+    roslaunch arithmetic arithmetic_client_cpp.launch
+    ```
+    **For Python,**
+    ```
+    roslaunch arithmetic arithmetic_client_py.launch
+    ``` 
+
     
     
     

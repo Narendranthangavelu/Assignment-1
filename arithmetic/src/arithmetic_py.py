@@ -2,13 +2,19 @@
 
 from arithmetic.srv import *
 import rospy
-import numpy as np
-import sys
+
+
 def process(req):
-    switch = {0:add,1:sub,2:mul,3:div,4:exp}
-    func = switch.get(int(req.id),'nothing')
-    print "Returning [%s + %s]"%(req.num1, req.num2)
-    return DataProcessResponse(func(req))
+    result =0.0
+    if req.id <5 :
+       switch = {0:add,1:sub,2:mul,3:div,4:power}
+       func = switch.get(int(req.id),'nothing')
+       result = func(req)
+       rospy.loginfo("sending back response [%f]",result)
+    else :
+       result = 0.0
+       rospy.logerr("Enter Identifier value between 0-4")
+    return DataProcessResponse(result)
 
 def add(req):
     return (req.num1 + req.num2)
@@ -22,8 +28,8 @@ def mul(req):
 def div(req):
     return (req.num1 / req.num2)
 
-def exp(req):
-    return (req.num1 + req.num2)
+def power(req):
+    return (req.num1**req.num2)
 
 def start():
     rospy.init_node('arithmetic_server_py')

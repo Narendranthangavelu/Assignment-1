@@ -1,4 +1,4 @@
 <launch>
    <arg name="path"  default="$(find file_writer)"/>
-   <node name="text_writer_py" pkg="file_writer" type="writer_py.py" args="$(arg path)" />
+   <node name="text_writer_py" pkg="file_writer" type="writer_py.py" args="$(arg path)" output = "screen"/>
 </launch>

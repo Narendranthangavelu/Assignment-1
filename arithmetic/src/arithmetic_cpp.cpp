@@ -6,9 +6,10 @@ bool process(arithmetic::DataProcess::Request  &req,
          arithmetic::DataProcess::Response &res)
 {
   std::string status;
-
-  switch((int)req.id)
+  if ((int)req.id > 4 )
   {
+  switch((int)req.id)
+    {
    case 0:
         res.result = req.num1 + req.num2;
         status = "Addition";
@@ -25,19 +26,24 @@ bool process(arithmetic::DataProcess::Request  &req,
         res.result = req.num1 / req.num2;
 	status = "Divide";
         break;
-   default :
-        res.result= 0;
-	status = "Give correct identifier (0-4)";
-        
+   case 4 :
+        res.result= pow(req.num1, req.num2);
+	status = "Give correct identifier (0-4)";     
+    }
   
+  ROS_INFO("sending back response [%f] after %s",res.result,status.c_str());
   }
-  ROS_INFO("request: x=%ld=, y=%ld", (long int)req.num1, (long int)req.num2);
-  ROS_INFO("sending back response: [%ld], %s", (long int)res.result,status.c_str());
+   else 
+  {
+  ROS_ERROR("Enter Identifier value between 0-4");
+  res.result = 0.0;
+  }
   return true;
 }
 
 int main(int argc, char **argv)
 {
+  
   ros::init(argc, argv, "arithmetic_server_cpp");
   ros::NodeHandle n;
 
